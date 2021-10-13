@@ -1,0 +1,447 @@
+& {
+  .carousel_basic {
+
+    .carousel, .carousel-inner {
+      width: 100%;
+      height: auto;
+
+      .slide-img {
+        position: absolute;
+        width: 100%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    &.sliderPartialOverlay {
+      .blackOverlay {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        color: #fff;
+        background: transparent;
+      }
+
+      .carousel-slide {
+        //max-height: 750px;
+      }
+
+      .slide-heading {
+        padding-top: 10px
+      }
+
+      .slide-business-card, .slide-slogan, .slide-heading, .slide_price_txt {
+        //background: #0000006b;
+      }
+    }
+
+
+  }
+
+  .carousel_basic.sliderNoOverlay {
+    .blackOverlay {
+      background: transparent;
+    }
+
+    .slide-heading {
+      padding-top: 10px
+    }
+
+    .slide-business-card, .slide-slogan, .slide-heading, .slide_price_txt {
+      background: transparent;
+    }
+  }
+
+  .carousel_basic .slide_price_txt {
+    padding: 20px;
+    font-size: 1.7rem;
+    text-align: center;
+    font-weight: bold;
+    text-decoration: underline;
+
+    .priceInner {
+
+    }
+  }
+
+
+  body.scrolled {
+    .carousel_basic {
+      margin-top: 50px;
+    }
+  }
+
+
+  .carousel_basic {
+
+
+    .carousel-control-next {
+      background-position: bottom right;
+      background-repeat: no-repeat;
+      background-size: 100%;
+
+      &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        border-top: 300px solid transparent;
+        border-left: 100px solid transparent;
+        border-bottom: 300px solid @carouselBasicSliderNextColor;
+        border-right: 100px solid @carouselBasicSliderNextColor;
+        width: 0;
+        height: 0;
+      }
+
+      .carousel-control-next-icon {
+        background: none !important;
+        position: absolute;
+        bottom: 90px;
+        right: 40px;
+        font-size: 80px;
+        color: white;
+      }
+    }
+
+    .carousel-caption {
+      .inner-caption {
+        margin-top: 5%;
+        background: fade(@carouselBasicBlockBackgroundColor, 20%);
+
+        .slide-heading {
+          //margin-top: -7%;
+          .clearfix {
+            width: 50%;
+            margin-left: 25%;
+            margin-bottom: 7px;
+            border-bottom: 1px solid white;
+          }
+
+          h3 {
+            color: @carouselBasicHeadingColor;
+            font-family: @carouselBasicHeadingFont;
+            font-size: @carouselBasicHeadingSize;
+
+
+            font-weight: normal;
+            text-transform: uppercase;
+          }
+
+          h4 {
+            color: @carouselBasicSubHeadingColor;
+            font-family: @carouselBasicSubHeadingFont;
+            font-size: @carouselBasicSubHeadingSize;
+
+            font-weight: bold;
+          }
+
+          small {
+            color: @carouselBasicSmallTextColor;
+            font-family: @carouselBasicSmallTextFont;
+            font-size: @carouselBasicSmallTextSize;
+
+            text-align: center;
+            display: block;
+            width: 500px;
+            margin: 0 auto;
+          }
+        }
+
+        .slide-business-card {
+          img {
+            height: 100px;
+            width: 100px;
+            border: 2px solid white;
+            border-radius: 50px;
+            position: absolute;
+            right: 0;
+            //bottom: 32%;
+            background: white;
+          }
+
+          div {
+            color: @carouselBasicTextLeftColor;
+            background: @carouselBasicTextLeftBackgroundColor;
+            font-family: @carouselBasicTextLeftFont;
+            font-size: @carouselBasicTextLeftSize;
+
+            position: absolute;
+            display: inline;
+            padding: 10px 60px 10px 10px;
+
+            width: 200px;
+            bottom: 0;
+          }
+        }
+
+        .slide-slogan {
+          text-align: left;
+          padding-right: 20%;
+          padding-left: 5%;
+
+          [data-element="Paragraph"] {
+            color: @carouselBasicTextColor;
+            font-family: @carouselBasicTextFont;
+            font-size: @carouselBasicTextSize;
+          }
+
+          @media (max-width: 500px) {
+            display: none !important;
+          }
+        }
+      }
+    }
+
+    .carousel-no-effect {
+
+
+    }
+
+    .carousel-blink {
+
+    }
+
+    .carousel-fade {
+
+
+      .carousel-item {
+        opacity: 1;
+
+        &.active {
+          opacity: 1;
+          display: block;
+          //position: absolute;
+          height: 100%;
+        }
+      }
+
+
+    }
+  }
+
+
+  @media only screen and (min-width: 1401px) {
+
+    .carousel_basic {
+      .carousel-inner {
+        //min-height: 500px;
+        .slide-img {
+          //width: auto;
+          //max-height: 750px;
+          //object-fit: cover;
+        }
+      }
+    }
+
+
+    @media only screen and (min-width: 1200px) and (max-width: 1400px) {
+
+      .carousel_basic {
+        .carousel-inner {
+          min-height: 400px;
+
+          .slide-img {
+            //max-width: unset;
+          }
+        }
+      }
+
+    }
+
+
+
+    @media only screen and (min-width: 1051px) and (max-width: 1199px) {
+      .carousel_basic {
+        .carousel-inner {
+          min-height: 400px;
+
+          .slide-img {
+            //max-width: unset;
+          }
+
+          .slide-business-card {
+            div {
+              right: 40px !important;
+            }
+          }
+        }
+      }
+
+
+    }
+
+
+
+
+
+    @media only screen and (min-width: 701px) and (max-width: 1050px) {
+
+
+      .carousel_basic {
+        .carousel-inner {
+          max-height: 300px;
+
+          .slide-img {
+            //max-width: unset;
+            //zoom:0.5;
+          }
+        }
+
+        .blackOverlay .inner-caption {
+          background: #0000006b;
+        }
+      }
+
+      .carousel_basic.sliderPartialOverlay .slide-business-card, .carousel_basic.sliderPartialOverlay .slide-slogan, .carousel_basic.sliderPartialOverlay .slide-heading, .carousel_basic.sliderPartialOverlay .slide_price_txt {
+        background: transparent;
+      }
+
+
+      .carousel_basic {
+        font-size: 75%;
+
+        h4, small {
+          display: none !important;
+        }
+
+        .carousel-control-next {
+          background-size: 140%;
+          :before {
+            border-bottom-color: @carouselBasicSliderNextColor;
+            border-right-color: @carouselBasicSliderNextColor;
+          }
+        }
+
+        .slide-business-card {
+          display: none;
+        }
+
+        .slide-slogan {
+          padding-left: 22%;
+        }
+      }
+
+    }
+
+
+
+
+    @media only screen and (max-width: 700px) {
+
+
+      .carousel_basic {
+        .carousel-inner {
+          max-height: 250px;
+
+          .slide-img {
+            //max-width: unset;
+            //zoom:.5;
+          }
+        }
+      }
+
+      .carousel_basic {
+        font-size: 70% !important;
+
+        .slide-business-card, small, .clearfix {
+          display: none !important;
+        }
+
+        h4 {
+          font-size: 24px !important;
+        }
+
+        h4 {
+          font-size: 22px !important;
+        }
+
+        .carousel-control-next {
+          background: transparent;
+        }
+
+        .slide-slogan {
+          padding-left: 22%;
+        }
+
+        .carousel-inner picture.slide-img, .carousel-inner img.slide-img {
+          //position: relative !important;
+          //bottom: unset !important;
+          position: absolute;
+          top: 0;
+          left: 0;
+          margin-top: -50%;
+        }
+
+        .carousel-control-prev-icon, .carousel-control-next-icon {
+          font-size: 60px !important;
+        }
+      }
+
+    }
+
+
+
+
+    @media only screen and (max-width: 575px) {
+
+      .carousel_basic {
+        .carousel-inner {
+          max-height: 360px;
+
+          .slide-img {
+            //max-width: unset;
+            //zoom:0.4;
+          }
+        }
+      }
+    }
+
+
+
+    @media only screen and (max-width: 500px) {
+      .carousel_basic {
+        .carousel-item {
+          display: flex;
+          flex-direction: column-reverse;
+
+          .carousel-caption {
+            position: relative;
+            padding: 0;
+            margin-top: -20px;
+            margin-bottom: 20px;
+
+            .slide_price_txt {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+
+
+
+
+    @media only screen and (max-width: 300px) {
+
+
+      .carousel_basic {
+        .carousel-inner {
+          max-height: 250px;
+
+          .slide-img {
+            //max-width: unset;
+          }
+        }
+      }
+    }
+
+
+  }
+}
+
+

@@ -1,0 +1,164 @@
+{var $data = $values->{"polyweb-cz/nemoweb/CarouselBasic"}}
+{var $slidesData = []}
+{php
+    if (!isset($data->boxGroup)) {
+    $slidesData[] = $data;
+    } else {
+    $slidesData = $data->boxGroup;
+    }
+}
+
+{var $extensionData = $extension->getData()}
+<div class="row carousel_basic sliderPartialOverlay">
+
+    <div id="carousel-{$attachmentId}" class="carousel slide carousel-slide" data-interval="3000">
+        <ol class="carousel-indicators" id="carousel-{$attachmentId}-indicators">
+            {foreach $slidesData as $slide}
+                <li class="{if $iterator->first}active{/if}" data-target="#carousel-{$attachmentId}"
+                    data-slide-to="{$iterator->counter0}"></li>
+            {/foreach}
+        </ol>
+        <div class="carousel-inner" n:group="boxGroup">
+
+            {foreach $slidesData as $slide}
+                {if array_key_exists($iterator->counter0, $extensionData['slides'])}
+                    {var $imageSlide = $extensionData['slides'][$iterator->counter0]['slide']}
+                    {var $imageMiniature = $extensionData['slides'][$iterator->counter0]['miniature']}
+                {else}
+                    {var $imageSlide = $extensionData['slides'][0]['slide']}
+                    {var $imageMiniature = $extensionData['slides'][0]['miniature']}
+                {/if}
+                {var $targetData = [
+                'miniature' => $imageMiniature->getId(),
+                'slide' => $imageSlide->getId()
+                ]}
+                <div class="carousel-item {if $iterator->first}active{/if}"
+                     n:group-child
+                     data-extension-data="{json_encode($targetData)}"
+                     data-extension-key="slides"
+                >
+                    <div n:varname="interval" n:editable class="hidden interval"></div>
+                    <div class="embed-responsive embed-responsive-21by9">
+                        <div class="embed-responsive-item">
+
+
+                            <picture class="slide-img" n:picture="xl, lg, md, sm, xs, lg" alt="Slide"
+                                     data-image="$imageSlide">
+
+                            </picture>
+                            {*				<img src="//diskety.cz/img/nemoweb/55/1950x760/2d3bd6a04582a922a8c23d285a867296.jpg?t=1559720837"*}
+{*					 alt="Slide" class="slide-img">*}
+                            <div class="carousel-caption blackOverlay">
+                                <div class="inner-caption">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12 text-center slide-heading">
+                                                <h3 n:varname="firstHeading" n:editable>{$text}</h3>
+                                                <div class="clearfix"></div>
+                                                <h4 n:varname="secondHeading" n:editable>{$text}</h4>
+                                                <small n:varname="thirdHeading" n:editable>{$text}</small>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-5 col-sm-12 slide-business-card">
+                                                <div n:varname="phone" n:editable>{$text}</div>
+                                                <picture class="slide-img-sm" n:picture="xl, lg, md, sm, xs, lg"
+                                                         data-image="$imageMiniature">
+
+                                                </picture>
+                                            </div>
+                                            <div class="col-md-7 col-sm-12 slide-slogan" style="min-height: 100px;">
+                                                <div n:varname="text" n:editable>{$text}</div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <div class="col-md-12 slide_price_txt"><span class="priceInner"></span>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {/foreach}
+            <a class="carousel-control-prev" href="#carousel-{$attachmentId}" role="button" data-slide="prev"
+               style="z-index: 10">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carousel-{$attachmentId}" role="button" data-slide="next"
+               style="z-index: 10">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+</div>
+<script n:syntax="double">
+    $(function () {
+        let carouselId = '#carousel-' + {{$attachmentId}};
+        let carouselElement = $(carouselId);
+        let carousel = carouselElement.carousel();
+        carouselElement.find('[data-slide="next"]').click(function () {
+            carousel.carousel('next');
+        });
+        carouselElement.find('[data-slide="prev"]').click(function () {
+            carousel.carousel('prev');
+        });
+
+        let t;
+        {{if $editor}}
+        $('#editorModal').on('show.bs.modal', function () {
+            console.log(carousel.carousel('pause'));
+            clearTimeout(t);
+        });
+        $('#editorModal').on('hide.bs.modal', function () {
+            carousel.carousel('cycle');
+            doTimeout();
+        });
+        $(carouselId + ' .carousel-item').on('group-copy', function () {
+            clearTimeout(t);
+            let newIndicators = '';
+            $(carouselId + ' .carousel-item').each(function (index) {
+                let element = $(this);
+                if (element.hasClass('active')) {
+                    newIndicators += '<li class="active" data-target="#carousel-{{$attachmentId}}" data-slide-to="' + index + '"></li>'
+                } else {
+                    newIndicators += '<li data-target="#carousel-{{$attachmentId}}" data-slide-to="' + index + '"></li>'
+                }
+            });
+            $('#carousel-{{$attachmentId}}-indicators').html(newIndicators);
+            doTimeout();
+        })
+        {{/if}}
+        doTimeout();
+
+        function doTimeout() {
+            let start = parseInt(carouselElement.find('.active [data-int]').data('int')) * 1000;
+            t = setTimeout(function () {
+                carousel.carousel({interval : 1000, ride: true});
+            }, start - 3000);
+            carousel.on('slid.bs.carousel', function () {
+                clearTimeout(t);
+                let duration = parseInt($(this).find('.active [data-int]').data('int')) * 1000;
+                // $(carouselId).carousel('pause');
+                t = setTimeout(function () {
+                    carousel.carousel({interval : 1000, ride: true});
+                }, duration - 3000);
+            })
+        }
+
+        $('.carousel-control-next').on('click', function () {
+            clearTimeout(t);
+        });
+
+        $('.carousel-control-prev').on('click', function () {
+            clearTimeout(t);
+        });
+
+    });
+</script>
+
+{$extensionInput}
+{$optionsInput}

@@ -1,0 +1,175 @@
+{
+	"$schema": "../../../../Schema/sectionSchema.json",
+	"flutterReady": true,
+	"lockedAt": 1627285403,
+	"attachmentName": "CarouselBasic",
+	"extension": "Slideshow",
+	"labelList": [
+		"MediaContent",
+		"Paragraph"
+	],
+	"optionsLoader": [
+		"anchor",
+		"container",
+		"indentation"
+	],
+	"options": [
+	],
+	"translations": {
+		"firstHeading": "První nadpis",
+		"secondHeading": "Podnadpis nadpis",
+		"thirdHeading": "Pod-pod nadpis",
+		"text": "Popisný text",
+		"phone": "Telefon",
+		"interval": "Interval slidu"
+	},
+	"elements": {
+		"defaultGroup": [
+		],
+		"boxGroup": [
+			[
+				{
+					"elementType": "Heading",
+					"varName": "firstHeading",
+					"defaults": {
+						"text": "Hlavní nadpis tohoto snímku"
+					}
+				},
+				{
+					"elementType": "Heading",
+					"varName": "secondHeading",
+					"defaults": {
+						"text": "Podnadpis tohoto snímku"
+					}
+				},
+				{
+					"elementType": "Heading",
+					"varName": "thirdHeading",
+					"defaults": {
+						"text": "krátké info"
+					}
+				},
+				{
+					"elementType": "Paragraph",
+					"varName": "text",
+					"breakable": true,
+					"defaults": {
+						"text": "Toto je náhodný text vyrobený generátorem: Senzál užít má úřadů nule umřít. Burzu fuk vinna, tmy měsíc, mu oji ně uvalí všední. Ó mu polí v jít řečí čím? Rok jel lomcoval, má dobu tomto houpe."
+					}
+				},
+				{
+					"elementType": "Heading",
+					"varName": "phone",
+					"defaults": {
+						"text": "+420 123 456 789"
+					}
+				},
+				{
+					"elementType": "IntType",
+					"varName": "interval",
+					"defaults": {
+						"int": "1"
+					}
+				}
+			]
+		]
+	},
+	"lessVariable": [
+		{
+			"keyName": "carouselBasicBlockBackgroundColor",
+			"defaultValue": "#000000",
+			"type": "color"
+		},
+		{
+			"keyName": "carouselBasicHeadingColor",
+			"defaultValue": "#FFF",
+			"type": "color"
+		},
+		{
+			"keyName": "carouselBasicHeadingFont",
+			"defaultValue": "Sans-serif",
+			"type": "font"
+		},
+		{
+			"keyName": "carouselBasicHeadingSize",
+			"defaultValue": "23",
+			"type": "numeric",
+			"unit": "px"
+		},
+		{
+			"keyName": "carouselBasicSubHeadingColor",
+			"defaultValue": "#FFF",
+			"type": "color"
+		},
+		{
+			"keyName": "carouselBasicSubHeadingFont",
+			"defaultValue": "Sans-serif",
+			"type": "font"
+		},
+		{
+			"keyName": "carouselBasicSubHeadingSize",
+			"defaultValue": "30",
+			"type": "numeric",
+			"unit": "px"
+		},
+		{
+			"keyName": "carouselBasicSmallTextColor",
+			"defaultValue": "#FFF",
+			"type": "color"
+		},
+		{
+			"keyName": "carouselBasicSmallTextFont",
+			"defaultValue": "Sans-serif",
+			"type": "font"
+		},
+		{
+			"keyName": "carouselBasicSmallTextSize",
+			"defaultValue": "13",
+			"type": "numeric",
+			"unit": "px"
+		},
+		{
+			"keyName": "carouselBasicTextColor",
+			"defaultValue": "#FFF",
+			"type": "color"
+		},
+		{
+			"keyName": "carouselBasicTextFont",
+			"defaultValue": "Sans-serif",
+			"type": "font"
+		},
+		{
+			"keyName": "carouselBasicTextSize",
+			"defaultValue": "16",
+			"type": "numeric",
+			"unit": "px"
+		},
+		{
+			"keyName": "carouselBasicTextLeftColor",
+			"defaultValue": "#FFF",
+			"type": "color"
+		},
+		{
+			"keyName": "carouselBasicTextLeftBackgroundColor",
+			"defaultValue": "#646363",
+			"type": "color"
+		},
+		{
+			"keyName": "carouselBasicTextLeftFont",
+			"defaultValue": "Sans-serif",
+			"type": "font"
+		},
+		{
+			"keyName": "carouselBasicTextLeftSize",
+			"defaultValue": "16",
+			"type": "numeric",
+			"unit": "px"
+		},
+		{
+			"type": "color",
+			"defaultValue": "~\"@{PrimaryColor3}\"",
+			"keyName": "carouselBasicSliderNextColor"
+		}
+	]
+}
+
